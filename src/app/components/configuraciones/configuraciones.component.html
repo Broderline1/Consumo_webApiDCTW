@@ -1,0 +1,25 @@
+<div>
+                <h2>Configuraciones</h2>
+                <ul>
+                  <li *ngFor="let config of configuraciones">
+                    {{ config.horarios }} - {{ config.cantidad_porcion }} - {{ config.modo_manual }}
+                    <button (click)="actualizarConfiguracion(config._id, config)">Actualizar</button>
+                    <button (click)="eliminarConfiguracion(config._id)">Eliminar</button>
+                  </li>
+                </ul>
+              
+                <h3>Crear nueva configuración</h3>
+                <form (ngSubmit)="crearConfiguracion()">
+                  <label>Horarios:</label>
+                  <input [(ngModel)]="nuevaConfiguracion.horarios" name="horarios" required />
+                  <label>Cantidad por porción:</label>
+                  <input [(ngModel)]="nuevaConfiguracion.cantidad_porcion" name="cantidad_porcion" type="number" required />
+                  <label>Modo manual:</label>
+                  <input [(ngModel)]="nuevaConfiguracion.id_dispensador" name="id_dispensador" type=""required />
+                  <label>ID del dispensador:</label>
+                  <input [(ngModel)]="nuevaConfiguracion.modo_manual" name="modo_manual" type="checkbox" />
+                  <button type="submit">Crear</button>
+                </form>
+              </div>
+              
+              
