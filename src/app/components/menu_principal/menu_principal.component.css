@@ -1,0 +1,99 @@
+body {
+                background-image: url("https://i.pinimg.com/736x/aa/74/e5/aa74e5df63f034370a4980014b870372.jpg");
+                background-size: cover;
+            }
+            .sidebar {
+                width: 250px;
+                background: rgba(255, 255, 255, 0.8);
+                position: fixed;
+                height: 100%;
+                width: 303px;
+                padding: 20px;
+                border: 1px solid black;
+            }
+            .content {
+                margin-left: 260px;
+                padding: 20px;
+            }
+            .info-box {
+                background: rgba(255, 255, 255, 0.8);
+                padding: 15px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                margin-top: 100px;
+                width: 500px;
+                height: 300px;
+                border: 1px solid black;
+            }
+            
+            .title{
+                color: #5a3527;
+                text-align: center;
+                margin-top: 30px;
+            }
+            
+            .div{
+                justify-content: center; /* Centra el div horizontalmente */
+                align-items: center; /* Centra el div verticalmente */
+                margin-left: 550px;
+            }
+            
+            .selec{
+                text-align: center;
+                color: #5a3527 ;
+                margin-top: 15px;
+            }
+            
+            .estados{
+                margin-top: 35px;
+                color: #af9278;
+                font-size: 20px;
+            }
+            
+            .nav-item{
+                margin-top: 70px;
+                font-size: 30px;
+                background-color:#af9278 ;
+                border-top-left-radius: 10px; /* Redondea solo la esquina superior izquierda */
+                border-bottom-left-radius: 10px; /* Redondea solo la esquina inferior izquierda */
+                width: 279px;
+                color: rgba(255, 255, 255, 0.8);
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            
+            /* Elimina el subrayado y cambia el color de los enlaces */
+            .nav-link {
+                color: inherit; /* Toma el color del texto del contenedor o el color que elijas */
+                text-decoration: none; /* Elimina el subrayado */
+            }
+            
+            .nav-link:hover {
+                color: inherit; /* Mantén el color igual en el hover, o cámbialo si lo prefieres */
+                text-decoration: none; /* Elimina el subrayado cuando se pasa el ratón */
+            }
+            
+            /* Estilo para los enlaces visitados */
+            .nav-link:visited {
+                color: inherit; /* Cambia el color de los enlaces visitados a lo que prefieras */
+            }
+            
+            /* Estilo para los enlaces cuando se hace clic (activo) */
+            .nav-link:active {
+                color:  #5a3527; /* Cambia el color del texto al hacer clic (puedes elegir el color que desees) */
+                transform: scale(0.98); /* Hace que el enlace se reduzca ligeramente para simular la pulsación */
+            }
+            
+            .carousel-slide{
+                margin-top: 150px;
+            }
+            
+            .carousel-control-prev{
+                margin-top: 155px;
+            }
+            
+            .carousel-control-next{
+                margin-top: 155px;
+            }
+            
+              

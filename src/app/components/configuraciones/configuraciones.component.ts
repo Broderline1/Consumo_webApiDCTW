@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfiguracionService } from '../../services/configuracion/configuracion.service';
+import { ConfiguracionesService, Configuracion } from '../../services/configuracion/configuracion.service';
 
 @Component({
   selector: 'app-configuraciones',
@@ -8,36 +8,58 @@ import { ConfiguracionService } from '../../services/configuracion/configuracion
   styleUrls: ['./configuraciones.component.css'],
 })
 export class ConfiguracionesComponent implements OnInit {
-  configuraciones: any[] = [];
-  nuevaConfiguracion: any = {};
+  configuraciones: Configuracion[] = [];
+  nuevaConfiguracion: Configuracion = {
+    horarios: [],
+    cantidad_porcion: 0,
+    modo_manual: false,
+    dispensador: null,
+  };
+  editando = false;
+  configuracionSeleccionada: Configuracion | null = null;
 
-  constructor(private configuracionService: ConfiguracionService) {}
+  constructor(private configuracionesService: ConfiguracionesService) {}
 
   ngOnInit(): void {
     this.cargarConfiguraciones();
   }
 
   cargarConfiguraciones(): void {
-    this.configuracionService.getConfiguraciones().subscribe((data) => {
+    this.configuracionesService.getConfiguraciones().subscribe((data) => {
       this.configuraciones = data;
     });
   }
 
+  agregarHorario(horario: string): void {
+    this.nuevaConfiguracion.horarios.push(horario);
+  }
+
   crearConfiguracion(): void {
-    this.configuracionService.createConfiguracion(this.nuevaConfiguracion).subscribe(() => {
+    this.configuracionesService.createConfiguracion(this.nuevaConfiguracion).subscribe(() => {
       this.cargarConfiguraciones();
-      this.nuevaConfiguracion = {};
+      this.nuevaConfiguracion = { horarios: [], cantidad_porcion: 0, modo_manual: false, dispensador: null };
     });
   }
 
-  actualizarConfiguracion(id: string, configuracion: any): void {
-    this.configuracionService.updateConfiguracion(id, configuracion).subscribe(() => {
-      this.cargarConfiguraciones();
-    });
+  editarConfiguracion(configuracion: Configuracion): void {
+    this.editando = true;
+    this.configuracionSeleccionada = { ...configuracion };
+  }
+
+  actualizarConfiguracion(): void {
+    if (this.configuracionSeleccionada) {
+      this.configuracionesService
+        .updateConfiguracion(this.configuracionSeleccionada._id!, this.configuracionSeleccionada)
+        .subscribe(() => {
+          this.cargarConfiguraciones();
+          this.editando = false;
+          this.configuracionSeleccionada = null;
+        });
+    }
   }
 
   eliminarConfiguracion(id: string): void {
-    this.configuracionService.deleteConfiguracion(id).subscribe(() => {
+    this.configuracionesService.deleteConfiguracion(id).subscribe(() => {
       this.cargarConfiguraciones();
     });
   }

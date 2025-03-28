@@ -1,25 +1,106 @@
-<div>
-                <h2>Configuraciones</h2>
-                <ul>
-                  <li *ngFor="let config of configuraciones">
-                    {{ config.horarios }} - {{ config.cantidad_porcion }} - {{ config.modo_manual }}
-                    <button (click)="actualizarConfiguracion(config._id, config)">Actualizar</button>
-                    <button (click)="eliminarConfiguracion(config._id)">Eliminar</button>
-                  </li>
-                </ul>
-              
-                <h3>Crear nueva configuración</h3>
-                <form (ngSubmit)="crearConfiguracion()">
-                  <label>Horarios:</label>
-                  <input [(ngModel)]="nuevaConfiguracion.horarios" name="horarios" required />
-                  <label>Cantidad por porción:</label>
-                  <input [(ngModel)]="nuevaConfiguracion.cantidad_porcion" name="cantidad_porcion" type="number" required />
-                  <label>Modo manual:</label>
-                  <input [(ngModel)]="nuevaConfiguracion.id_dispensador" name="id_dispensador" type=""required />
-                  <label>ID del dispensador:</label>
-                  <input [(ngModel)]="nuevaConfiguracion.modo_manual" name="modo_manual" type="checkbox" />
-                  <button type="submit">Crear</button>
-                </form>
-              </div>
-              
-              
+<div class="container mt-4">
+  <h2 class="mb-4">Configuraciones</h2>
+
+  <!-- Formulario para crear configuraciones -->
+  <form *ngIf="!editando" (ngSubmit)="crearConfiguracion()" class="mb-4">
+    <div class="mb-3">
+      <label class="form-label">Horarios:</label>
+      <div class="input-group">
+        <input type="time" #horarioInput class="form-control" />
+        <button type="button" class="btn btn-primary" (click)="agregarHorario(horarioInput.value)">
+          Agregar Horario
+        </button>
+      </div>
+      <ul class="list-group mt-2">
+        <li *ngFor="let horario of nuevaConfiguracion.horarios" class="list-group-item">{{ horario }}</li>
+      </ul>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Cantidad por porción:</label>
+      <input
+        type="number"
+        [(ngModel)]="nuevaConfiguracion.cantidad_porcion"
+        name="cantidad_porcion"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Modo Manual:</label>
+      <input
+        type="checkbox"
+        [(ngModel)]="nuevaConfiguracion.modo_manual"
+        name="modo_manual"
+        class="form-check-input"
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Dispensador (opcional):</label>
+      <input
+        type="text"
+        [(ngModel)]="nuevaConfiguracion.dispensador"
+        name="dispensador"
+        class="form-control"
+      />
+    </div>
+    <button type="submit" class="btn btn-success">Crear Configuración</button>
+  </form>
+
+  <!-- Formulario para editar configuraciones -->
+  <form *ngIf="editando && configuracionSeleccionada" (ngSubmit)="actualizarConfiguracion()" class="mb-4">
+    <div class="mb-3">
+      <label class="form-label">Horarios:</label>
+      <div class="input-group">
+        <input type="time" #horarioInput class="form-control" />
+        <button type="button" class="btn btn-primary" (click)="agregarHorario(horarioInput.value)">
+          Agregar Horario
+        </button>
+      </div>
+      <ul class="list-group mt-2">
+        <li *ngFor="let horario of configuracionSeleccionada.horarios" class="list-group-item">{{ horario }}</li>
+      </ul>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Cantidad por porción:</label>
+      <input
+        type="number"
+        [(ngModel)]="configuracionSeleccionada.cantidad_porcion"
+        name="cantidad_porcion"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Modo Manual:</label>
+      <input
+        type="checkbox"
+        [(ngModel)]="configuracionSeleccionada.modo_manual"
+        name="modo_manual"
+        class="form-check-input"
+      />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Dispensador (opcional):</label>
+      <input
+        type="text"
+        [(ngModel)]="configuracionSeleccionada.dispensador"
+        name="dispensador"
+        class="form-control"
+      />
+    </div>
+    <button type="submit" class="btn btn-warning">Actualizar Configuración</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="editando = false">Cancelar</button>
+  </form>
+
+  <!-- Lista de configuraciones -->
+  <ul class="list-group">
+    <li *ngFor="let configuracion of configuraciones" class="list-group-item mb-2">
+      <p><strong>Horarios:</strong> {{ configuracion.horarios.join(', ') }}</p>
+      <p><strong>Cantidad por porción:</strong> {{ configuracion.cantidad_porcion }}</p>
+      <p><strong>Modo Manual:</strong> {{ configuracion.modo_manual ? 'Sí' : 'No' }}</p>
+      <p><strong>Dispensador:</strong> {{ configuracion.dispensador || 'Ninguno' }}</p>
+      <button class="btn btn-primary btn-sm me-2" (click)="editarConfiguracion(configuracion)">Editar</button>
+      <button class="btn btn-danger btn-sm" (click)="eliminarConfiguracion(configuracion._id!)">Eliminar</button>
+    </li>
+  </ul>
+</div>

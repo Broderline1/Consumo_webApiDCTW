@@ -1,0 +1,23 @@
+.text-cafesito {
+    color: #af9278;
+  }
+  .fondo-container {
+    position: relative;
+    background: url('https://i.pinimg.com/736x/aa/74/e5/aa74e5df63f034370a4980014b870372.jpg') no-repeat center center/cover;
+  }
+  
+  .fondo-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25); /* Ajusta el último valor (0.5) para más o menos transparencia */
+    backdrop-filter: blur(1px); /* Aplica el desenfoque, ajusta el valor (px) según lo necesario */
+  }
+  
+  .fondo-container > * {
+    position: relative; /* Para que el contenido no sea afectado */
+  }
+  
