@@ -1,0 +1,10 @@
+<button class="toggle-button" (click)="toggleSidebar()">☰</button>
+<div class="sidebar" [class.open]="isSidebarOpen">
+  <h3>Menú</h3>
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="item.path">{{ item.label }}</a>
+    </li>
+  </ul>
+  <button class="logout-button" (click)="logout()">Cerrar sesión</button>
+</div>

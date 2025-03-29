@@ -1,0 +1,52 @@
+/* Fondo de la página */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('/mascotas.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  z-index: 1;
+  overflow: hidden; /* Evita cualquier desplazamiento */
+}
+
+/* Contenedor principal */
+.container-fluid {
+  position: fixed; /* Fija el contenedor en la pantalla */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Asegura que ocupe todo el ancho */
+  height: 100vh; /* Asegura que ocupe todo el alto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0; /* Elimina márgenes */
+  padding: 0; /* Elimina padding */
+  overflow: hidden; /* Evita cualquier desplazamiento */
+  z-index: 2;
+}
+
+/* Tarjeta */
+.card {
+  width: 400px; /* Ancho fijo para la tarjeta */
+  max-width: 90%; /* Responsivo en pantallas pequeñas */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra */
+  background: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
+  text-align: center; /* Centra el contenido de texto */
+}
+
+/* Botones */
+.btn {
+  font-weight: bold;
+  border-radius: 25px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #5a3527;
+  color: white;
+}

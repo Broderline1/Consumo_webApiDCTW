@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div class="app-container">
+  <app-sidebar *ngIf="!isLoginPage || !isRegisterPage"></app-sidebar>
+  <div class="content" [ngClass]="{'no-margin': isLoginPage}">
+    <router-outlet></router-outlet>
+  </div>
+</div>

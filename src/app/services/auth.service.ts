@@ -33,4 +33,8 @@ export class AuthService {
   isLoggedIn() {
     return this.loggedIn.asObservable();
   }
+
+  register(nombre: string, correo: string, contraseña: string, telefono: string) {
+    return this.http.post(`${this.apiUrl}/register`, { nombre, correo, contraseña, telefono });
+  }
 }

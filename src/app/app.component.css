@@ -1,0 +1,23 @@
+.app-container {
+  display: flex;
+}
+
+.content {
+  margin-left: 230px; /* Espacio para la sidebar */
+  padding: 20px;
+  width: 100%;
+}
+
+.content.no-margin {
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-left: 0;
+  }
+
+  .content.sidebar-open {
+    margin-left: 250px;
+  }
+}

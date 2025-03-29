@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+/* Aplica la fuente globalmente */
+body, html {
+  font-family: 'Source Code Pro Medium', monospace; /* Fuente principal */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Asegúrate de que todos los elementos hereden la fuente */
+*, *::before, *::after {
+  font-family: inherit;
+  box-sizing: inherit;
+}

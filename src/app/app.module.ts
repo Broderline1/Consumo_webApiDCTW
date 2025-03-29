@@ -14,8 +14,10 @@ import { ConfiguracionesComponent } from '../app/components/configuraciones/conf
 import { ServomotorComponent } from './components/servomotor/servomotor.component';
 import { LoginComponent } from './pages/login/login.component'; // Asegúrate de importar todos los componentes
 import { RegisterComponent } from './pages/register/register.component'; // Ejemplo de otro componente
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-import { AppRoutingModule } from './app-routing.module'; // Importa el módulo de rutas
+ // Importa el módulo de rutas
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { AppRoutingModule } from './app-routing.module'; // Importa el módulo d
     ServomotorComponent,
     LoginComponent, // Asegúrate de declarar todos los componentes aquí
     RegisterComponent, // Ejemplo de otro componente
+    SidebarComponent,
+    
   ],
   imports: [
     RouterModule.forRoot([]), // Configura el enrutador
